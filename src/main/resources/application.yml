@@ -1,0 +1,36 @@
+
+#Server Setting
+server:
+  port: 80
+  tomcat:
+    max-threads: 500
+    accesslog:
+      enabled: true     
+      directory:  c:/temp/svc_monitoring/tomcat/${server.port}/logs
+      prefix: access_${server.port}
+      pattern: "%{yyyy-MM-dd HH:mm:ss}t %a \"%r\" %s (%b sent byte) (%D ms)"
+
+#Spring Setting
+spring:
+  application:
+    name: SVC-MONITORING-${server.port}
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      location: c:/temp/svc_monitoring/uploaded
+      
+#Security
+security:
+  basic:
+    enabled: false
+  user:
+    name: user
+    password: 1234
+    
+    
+    
